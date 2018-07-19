@@ -1,5 +1,11 @@
 Provisioning a new site
 =======================
+## Add non-root user
+adduser username
+usermod -aG sudo username
+
+ssh-copy-id username@IP_server
+
 ## Required packages:
 * nginx
 * Python 3.6
@@ -7,8 +13,13 @@ Provisioning a new site
 * Git
 
 eg, on Ubuntu:
-sudo add-apt-repository ppa:fkrull/deadsnakes
-sudo apt-get install nginx git python36 python3.6-venv
+sudo apt-get install nginx
+sudo systemctl start nginx
+
+sudo apt install software-properties-common (to get command add-apt-repository)
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt-get install git python3.6 python3.6-venv
 
 ## Nginx Virtual Host config
 * see nginx.template.conf
